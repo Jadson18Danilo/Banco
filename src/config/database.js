@@ -1,3 +1,9 @@
+import dotenv from 'dotenv'
+// Importa o dotenv para carregar as variáveis de ambiente
+
+dotenv.config()
+// Carrega as variáveis de ambiente do arquivo .env
+
 // Importa o pool do pg
 import pg from 'pg'
 
@@ -5,12 +11,13 @@ import pg from 'pg'
 const { Pool } = pg
 
 // Cria o pool de conexões com o banco de dados
+
 const client = new Pool({
-  user: 'postgres',
-  password: 'BemVindo!',
-  port: '5432',
-  host: 'localhost',
-  database: 'postgres',
+  user: process.env.USUARIO,
+  password: process.env.PASSWORD,
+  host: process.env.HOST,
+  port: process.env.PORTA, 
+  database: process.env.DATABASE,
 })
 
 export default client
