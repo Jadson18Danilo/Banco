@@ -1,4 +1,8 @@
-import client from '../database.js';
+import dotenv from 'dotenv';
+dotenv.config()
+// Importa o dotenv para carregar as variáveis de ambiente
+
+import client from './database.js';
 
 class CriarTabelas{
     static async aluno(){
@@ -7,17 +11,17 @@ class CriarTabelas{
         email varchar(100) not null, 
         matricula char(5) not null unique, 
         telefone char(11) not null, 
-        cod_turma integer not null references turma(cod_turma),
+        id integer not null references turma(id)
         )`
         await client.query(consulta)
         console.log('Tabela aluno criada com sucesso!')
     }
 
     static async professor(){
-        const consulta = `create table if not exists turma(
+        const consulta = `create table if not exists professor(
             nome varchar(100) not null, 
             matricula char(5) not null unique,
-            cod_turma integer not null references turma(cod_turma),
+            id integer not null references turma(id)
         )`
         await client.query(consulta)
         console.log('Tabela professor criada com sucesso!')
