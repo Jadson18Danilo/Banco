@@ -8,8 +8,8 @@ class CriarTabelas{
     static async aluno(){
         const consulta = `create table if not exists aluno(
         nome varchar(100) not null, 
-        email varchar(100) not null, 
-        matricula char(5) not null unique, 
+        email varchar(100) not null unique, 
+        matricula char(5) not null, 
         telefone char(11) not null, 
         id integer not null references turma(id)
         )`
